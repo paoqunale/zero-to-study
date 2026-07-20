@@ -1,0 +1,44 @@
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作品 · 迷図的博客</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="main">
+    <div class="page-head">
+      <h1>作品</h1>
+      <p>做过的项目、写过的组件，都在这里</p>
+    </div>
+
+    <!-- 分类筛选 -->
+    <div class="plan-filters" id="workFilters">
+      <button class="active" data-cat="all">全部</button>
+      <button data-cat="website">网站</button>
+      <button data-cat="tool">工具</button>
+      <button data-cat="design">设计</button>
+    </div>
+
+    <!-- 作品网格 -->
+    <div class="work-grid" id="workGrid"></div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const grid = document.getElementById("workGrid");
+
+      renderWorks(grid, WORKS, "all");
+
+      document.getElementById("workFilters").addEventListener("click", function (e) {
+        if (e.target.tagName !== "BUTTON") return;
+        this.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
+        e.target.classList.add("active");
+        renderWorks(grid, WORKS, e.target.dataset.cat);
+      });
+    });
+  </script>
+</body>
+</html>

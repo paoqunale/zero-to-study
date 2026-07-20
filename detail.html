@@ -1,0 +1,74 @@
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>详情 · 迷図的博客</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="main">
+    <a class="detail-back" id="backLink" href="index.html">← 返回</a>
+
+    <div class="detail-layout">
+      <article>
+        <div class="detail-cover" id="cover">📄</div>
+        <header class="detail-head">
+          <div class="meta">
+            <span class="tag" id="typeTag">文章</span>
+            <span id="dateMeta">2025-02-18</span>
+          </div>
+          <h1 id="title">加载中…</h1>
+        </header>
+
+        <div class="article-body" id="body"></div>
+
+        <!-- 底部导航 -->
+        <footer class="detail-footer">
+          <div class="prev-next">
+            <a class="pn-card prev" href="detail.html?type=article&id=p2">
+              <span>← 上一篇</span>
+              <h4>理解 JavaScript 的事件循环</h4>
+            </a>
+            <a class="pn-card next" href="detail.html?type=work&id=w1">
+              <span>下一篇 →</span>
+              <h4>天气卡片组件</h4>
+            </a>
+          </div>
+
+          <div class="related">
+            <h3>相关内容</h3>
+            <div class="related-list">
+              <a class="related-card" href="detail.html?type=article&id=p2">
+                <span class="tag accent">文章</span>
+                <h4>理解 JavaScript 的事件循环</h4>
+              </a>
+              <a class="related-card" href="detail.html?type=work&id=w1">
+                <span class="tag green">作品</span>
+                <h4>天气卡片组件</h4>
+              </a>
+              <a class="related-card" href="detail.html?type=plan&id=pl1">
+                <span class="tag">计划</span>
+                <h4>完成 React 进阶学习</h4>
+              </a>
+            </div>
+          </div>
+        </footer>
+      </article>
+
+      <!-- 侧边目录 -->
+      <aside class="toc" id="toc">
+        <h4>目录</h4>
+        <ul id="tocList"></ul>
+      </aside>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderDetail(DETAIL_CONTENTS);
+    });
+  </script>
+</body>
+</html>

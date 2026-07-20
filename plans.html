@@ -1,0 +1,63 @@
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>学习计划 · 迷図的博客</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="main">
+    <div class="page-head">
+      <h1>学习计划</h1>
+      <p>把想学的东西拆成可执行的步骤，一点点完成</p>
+    </div>
+
+    <!-- 整体进度概览 -->
+    <div class="progress-overview">
+      <div class="progress-ring">
+        <svg width="90" height="90">
+          <circle cx="45" cy="45" r="38" fill="none" stroke="#eee9e2" stroke-width="8" />
+          <circle id="ringFill" cx="45" cy="45" r="38" fill="none" stroke="#c8663f" stroke-width="8"
+            stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="238.76" />
+        </svg>
+        <span class="val" id="ringVal">0%</span>
+      </div>
+      <div class="txt">
+        <h3>本月进度</h3>
+        <p>已完成 <strong id="doneCount">12</strong> / <span id="totalCount">20</span> 个学习目标，继续保持 💪</p>
+      </div>
+    </div>
+
+    <!-- 筛选按钮 -->
+    <div class="plan-filters" id="planFilters">
+      <button class="active" data-status="all">全部</button>
+      <button data-status="doing">进行中</button>
+      <button data-status="done">已完成</button>
+      <button data-status="todo">待开始</button>
+    </div>
+
+    <!-- 计划卡片网格 -->
+    <div class="plan-grid" id="planGrid"></div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const grid = document.getElementById("planGrid");
+
+      // 初始渲染
+      renderPlans(grid, PLANS, "all");
+      animateProgressRing(12, 20);
+
+      // 筛选切换
+      document.getElementById("planFilters").addEventListener("click", function (e) {
+        if (e.target.tagName !== "BUTTON") return;
+        this.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
+        e.target.classList.add("active");
+        renderPlans(grid, PLANS, e.target.dataset.status);
+      });
+    });
+  </script>
+</body>
+</html>
